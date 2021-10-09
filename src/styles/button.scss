@@ -1,0 +1,27 @@
+.button{
+    height: 50px;
+    border-radius: 8px;
+    border: 0;
+    font-weight: 500;
+    background-color: #835afd;
+    filter: brightness(0.9);
+    padding: 0 32px;
+
+    color: #fff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+            
+    cursor: pointer;
+
+    &:not(:disabled):hover{
+        transition: 0.2s;
+        filter: none;
+    }
+
+    &:disabled{
+        opacity: 0.6;
+        cursor: default;
+    }
+}
