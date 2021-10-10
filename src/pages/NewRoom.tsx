@@ -1,30 +1,17 @@
-import { useAuth } from '../hooks/useAuth';
+// import { useAuth } from '../hooks/useAuth';
 // Contexto
-import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 // Rotas
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
-import GoogleIconImg from '../assets/images/google-icon.svg';
-// Assets/imagens 
+// Assets/Imagens
 import { Button } from '../components/Button';
 // Componentes
 import '../styles/auth.scss'
 // CSS
-import '../services/firebase';
-import { firebase, auth, database } from '../services/firebase';
-// Firebase
 
-export const Home = () => {
-    const history = useHistory();
-    const { user, signInWidthGoogle } = useAuth()
-
-    async function handleCreateRoom(){
-        if(!user){
-            await signInWidthGoogle();
-        }
-
-        history.push('/rooms/new')
-    }
+export const NewRoom = () => {
+    // const { user } = useAuth()
 
     return (
         <div className="home">
@@ -36,18 +23,13 @@ export const Home = () => {
             <main className="home__main">
                 <div className="main-content">
                     <img className="main-content__img" src={logoImg} alt="Letmeask" />
-                    <button onClick={handleCreateRoom} className="main-content__btn">
-                        <img src={GoogleIconImg} alt="Logo do Google" />
-                        Crie sua sala com o Google
-                    </button>
-                    <div className="main-content__separator">
-                        ou entre em uma sala
-                    </div>
+                    <h2>Crie uma nova sala</h2>
                     <form className="main-content__form" >
-                        <input className="form__input" type="text" placeholder="Digite o código da sala" />
+                        <input className="form__input" type="text" placeholder="Nome da sala" />
                         <Button typeof="submit" className="button form__button">
-                            Entrar na sala
+                            Cria sala
                         </Button>
+                        <p>Quer entrar em uma sala já existente? <Link to="/">Clique aqui</Link></p>
                     </form>
                 </div>
             </main>
