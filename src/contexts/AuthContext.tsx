@@ -22,6 +22,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
 
     const [user, setUser] = useState<UserType>()
 
+    // Guardar contenxt da autenticação do Google em caso de reload da tela
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if(user){
@@ -44,6 +45,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
         }
     }, [])
 
+    // Popup de autenticação com Google
     async function signInWidthGoogle(){
         const provider = new firebase.auth.GoogleAuthProvider();
 
