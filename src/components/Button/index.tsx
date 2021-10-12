@@ -1,8 +1,12 @@
-import { BaseHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import '../../styles/button.scss';
 
-type ButtonProps = BaseHTMLAttributes<HTMLButtonElement>
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-export const Button = (props: ButtonProps) => {
-    return <button {...props}>{props.children || "Ir"}</button>
+export function Button(props: ButtonProps) {
+    return (
+        <button {...props} >
+            {props.children}
+        </button>
+    )
 }
