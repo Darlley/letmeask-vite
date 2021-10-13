@@ -1,6 +1,6 @@
 import { database } from '../services/firebase';
 // Firebase
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { useAuth } from '../hooks/useAuth';
 // hooks
 import { useParams } from 'react-router';
@@ -14,39 +14,90 @@ import '../styles/room.scss';
 import toast, { Toaster } from 'react-hot-toast';
 // CSS
 
+type FirebaseQuestions = Record<string, {
+    author: {
+        nome: string,
+        avatar: string
+    },
+    content: string,
+    isAnswered: boolean,
+    isHighLighted: boolean
+}>
+type Questions = {
+    id: string,
+    author: {
+        nome: string,
+        avatar: string
+    },
+    content: string,
+    isAnswered: boolean,
+    isHighLighted: boolean
+
+}
 type RoomParams = {
     id: string
 }
+
 export const Room = () => {
     const params = useParams<RoomParams>()
     const roomId = params.id;
-
     const [newQuestion, setNewQuestion] = useState('');
     const { user } = useAuth();
+    
+    const [questions, setQuestions] = useState<Questions[]>([])
+    const [title, setTitle] = useState('')
+    
+    useEffect(() => {
+        const roomRef = database.ref(`rooms/${roomId}`);
+
+        roomRef.on('value', room => {
+            const databaseRoom = room.val();
+            const firebaseQuestions: FirebaseQuestions = databaseRoom.questions ?? {};
+
+            const parseQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
+                return {
+                    id: key,
+                    content: value.content,
+                    author: value.author,
+                    isHighLighted: value.isHighLighted,
+                    isAnswered: value.isAnswered
+                }
+            })
+
+            setTitle(databaseRoom.title)
+            setQuestions(parseQuestions)
+        })
+    }, [roomId])
+
     async function handleSendQuestion(event: FormEvent) {
         event.preventDefault();
 
         if(newQuestion.trim() === ''){
             return;
         }
-        if(!user){
+
+        if(user){
+            if(newQuestion.trim().length >= 20){
+                const question = {
+                    content: newQuestion,
+                    author: {
+                        name: user?.nome,
+                        avatar: user?.avatar,
+                    },
+                    isHighLighted: false,
+                    isAnswered: false
+                };
+
+                await database.ref(`rooms/${roomId}/questions`).push(question)
+                setNewQuestion('')
+
+                toast.success('Pergunta enviada com sucesso!')
+            }else{
+                toast.error('A pergunta deve ter no mínimo 20 caracteres!')
+            }
+        }else{
             toast.error('Faça o login!')
         }
-
-        const question = {
-            content: newQuestion,
-            author: {
-                name: user?.nome,
-                avatar: user?.avatar,
-            },
-            isHighLighted: false,
-            isAnswered: false
-        };
-
-        await database.ref(`rooms/${roomId}/questions`).push(question)
-        setNewQuestion('')
-        toast.success('Pergunta enviada com sucesso!')
-
     }
 
     return (
@@ -60,8 +111,8 @@ export const Room = () => {
             </header>
             <main>
                 <div className="room-title">
-                    <h1>Sobre ReactJS</h1>
-                    <span>4 perguntas</span>
+                    <h1>Sala: {title}</h1>
+                    {questions.length > 0 && <span>{questions.length} pergunt{questions.length > 1 ? 'as' : 'a'}</span> }
                 </div>
 
                 <form onSubmit={handleSendQuestion}>
@@ -82,6 +133,8 @@ export const Room = () => {
                         </Button>
                     </div>
                 </form>
+
+                {JSON.stringify(questions)}
             </main>
         </div>
         <Toaster
