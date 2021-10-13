@@ -4,25 +4,27 @@
         border-bottom: 1px solid #e2e2e2;
 
         .content{
-            max-width: 1120px;
+            width: 100%;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
 
             > img{
-                max-height: 45px;
+                max-height: 80px;
+                margin-bottom: 20px;
             }
         }
     }
     main{
-        max-width: 800px;
+        width: 95%;
         margin: 0 auto;
 
         .room-title{
-            margin: 32px 0 24px;
+            margin: 40px 0 24px;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            align-items: flex-start;
 
             h1{
                 font-family: 'Poppins', sans-serif;
@@ -30,7 +32,7 @@
                 color: #29292e;
             }
             span{
-                margin-left: 16px;
+                margin-top: 16px;
                 background-color: #e559f9;
                 border-radius: 99px;
                 padding: 8px 16px;
@@ -85,6 +87,108 @@
                 }
             }
 
+        }
+
+        .questions{
+            width: 100%;
+            border: 1px solid red;
+            overflow: scroll;
+            display: flex;
+            font-size: 10px;
+        }
+        
+    }
+}
+@media screen and(min-width: 1200px){
+    #page-root{
+        header{
+            .content{
+                max-width: 1120px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+    
+                > img{
+                    max-height: 45px;
+                    margin-bottom: 0;
+                }
+            }
+        }
+        main{
+            max-width: 800px;
+    
+            .room-title{
+                margin: 32px 0 24px;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+    
+                h1{
+                    flex: 9;
+                    font-family: 'Poppins', sans-serif;
+                    font-size: 24px;
+                    color: #29292e;
+                }
+                span{
+                    flex: 1;
+                    margin-top: 0;
+                    background-color: #e559f9;
+                    border-radius: 99px;
+                    padding: 8px 16px;
+                    color: #fff;
+                    font-weight: 500;
+                    font-size: 14px;
+                }
+            }
+    
+            form{
+                textarea{
+                    width: 100%;
+                    border: 0;
+                    padding: 16px;
+                    border-radius: 8px;
+                    background-color: #fefefe;
+                    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+                    resize: vertical;
+                    min-height: 130px;
+                }
+    
+                .form-footer{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-top: 16px;
+    
+                    .user-info{
+                        display: flex;
+                        align-items: center;
+    
+                        > img{
+                            height: 35px;
+                            border-radius: 50%;
+                        }
+                        > span {
+                            margin-left: 8px;
+                            color: #29292e;
+                            font-weight: 500;
+                            font-size: 14px;
+                        }
+                    }
+                    span{
+                        font-size: 14px;
+                        color: #737380;
+                        font-weight: 500;
+    
+                        a{
+                            color: #835AFD;
+                            margin-left: 3px;
+                        }
+                    }
+                }
+    
+            }
         }
     }
 }

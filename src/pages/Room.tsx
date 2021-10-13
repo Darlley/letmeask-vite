@@ -119,7 +119,7 @@ export const Room = () => {
                     <textarea placeholder="O que você quer perguntar?" onChange={event => setNewQuestion(event.target.value)} value={newQuestion} />
                     <div className="form-footer">
                         { user 
-                        ? 
+                        ?
                             <div className="user-info">
                                 <img src={user.avatar} alt={user.nome} />
                                 <span>{user.nome}</span>
@@ -134,7 +134,9 @@ export const Room = () => {
                     </div>
                 </form>
 
-                {JSON.stringify(questions)}
+                <div className="questions">
+                    {JSON.stringify(questions)}
+                </div>
             </main>
         </div>
         <Toaster

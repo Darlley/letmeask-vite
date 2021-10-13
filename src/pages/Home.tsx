@@ -63,7 +63,7 @@ export const Home = () => {
                         Crie sua sala com o Google
                     </button>
                     <div className="main-content__separator">
-                        ou entre em uma sala
+                        ou entre em uma sala -Mluv2k0Aj7ncFLwZvOC
                     </div>
                     <form className="main-content__form" onSubmit={handleJoinRoom}>
                         <input className="form__input" type="text" placeholder="Digite o código da sala" onChange={event => {setRoomCode(event.target.value)}} value={roomCode} />
