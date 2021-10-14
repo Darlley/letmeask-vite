@@ -5,7 +5,7 @@ import { firebase, auth } from '../services/firebase';
 
 type UserType = {
     id: string,
-    nome: string,
+    name: string,
     avatar: string
 }
 type AuthContextType = {
@@ -34,7 +34,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
     
                 setUser({
                     id: uid,
-                    nome: displayName,
+                    name: displayName,
                     avatar: photoURL
                 })
             }
@@ -60,7 +60,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
 
             setUser({
                 id: uid,
-                nome: displayName,
+                name: displayName,
                 avatar: photoURL
             })
         }

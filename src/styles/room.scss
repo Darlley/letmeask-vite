@@ -89,14 +89,9 @@
 
         }
 
-        .questions{
-            width: 100%;
-            border: 1px solid red;
-            overflow: scroll;
-            display: flex;
-            font-size: 10px;
+        .fild-questions{
+            margin: 40px 0;
         }
-        
     }
 }
 @media screen and(min-width: 1200px){
