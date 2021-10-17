@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { ReactNode } from "react";
-import '../styles/question.scss'
+import classes from "classnames";
+import '../styles/question.scss';
 
 type QuestionProps = {
     content: string;
@@ -9,11 +10,17 @@ type QuestionProps = {
         avatar: string;
     };
     children?: ReactNode;
+    isAnswered?: boolean;
+    isHighLighted?: boolean;
 };
 
-export const Question = ({content, author, children}: QuestionProps) => {
+export const Question = ({content, author, isAnswered=false, isHighLighted=false, children}: QuestionProps) => {
     return (
-        <div className="question">
+        <div className={classes(
+            'question',
+            { answered: isAnswered },
+            { highlighted: isHighLighted && !isAnswered }
+        )}>
             <p>{content}</p>
             <footer>
                 <div className="user-info">

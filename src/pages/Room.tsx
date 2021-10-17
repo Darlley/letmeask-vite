@@ -109,11 +109,13 @@ export const Room = () => {
                 <div className="fild-questions">
                     {questions.map(question => {
                         return (
-                            <Question key={question.id} content={question.content} author={question.author}>
-                                <button className={`like-button ${question.likeId && 'liked'} `} type="button" aria-label="Marcar como gostei" onClick={() => handleLikeQuestion(question.id, question.likeId)}>
-                                    {question.likeCount > 0 && <span>{question.likeCount}</span>}
-                                    <Like />
-                                </button>
+                            <Question key={question.id} content={question.content} author={question.author} isAnswered={question.isAnswered} isHighLighted={question.isHighLighted}>
+                                { !question.isAnswered && (
+                                    <button className={`like-button ${question.likeId && 'liked'} `} type="button" aria-label="Marcar como gostei" onClick={() => handleLikeQuestion(question.id, question.likeId)}>
+                                        {question.likeCount > 0 && <span>{question.likeCount}</span>}
+                                        <Like />
+                                    </button>
+                                )}
                             </Question>
                         )
                     })}
