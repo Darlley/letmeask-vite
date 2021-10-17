@@ -45,6 +45,11 @@ export const Home = () => {
             return;
         }
 
+        if(roomReferenceFirebase.val().endedAt){
+            alert('Sala encerrada com sucesso!')
+            return;
+        }
+
         history.push(`/rooms/${roomCode}`)
     }
 
@@ -67,7 +72,7 @@ export const Home = () => {
                     </div>
                     <form className="main-content__form" onSubmit={handleJoinRoom}>
                         <input className="form__input" type="text" placeholder="Digite o código da sala" onChange={event => {setRoomCode(event.target.value)}} value={roomCode} />
-                        <Button typeof="submit" className="button form__button">
+                        <Button typeof="submit" className="button form__button" isOutlined={false}>
                             Entrar na sala
                         </Button>
                     </form>

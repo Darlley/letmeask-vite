@@ -4,7 +4,6 @@
     border: 0;
     font-weight: 500;
     background-color: #835afd;
-    filter: brightness(0.9);
     padding: 0 32px;
 
     color: #fff;
@@ -15,9 +14,20 @@
             
     cursor: pointer;
 
-    &:not(:disabled):hover{
+    &.outlined{
+        background-color: #fff;
+        border: 1px solid #835afd;
+        color: #835afd;
+
+        &:hover{
+            color: #5d27ff;
+        }
+    }
+
+    &:not(:disabled):not(.outlined):hover{
         transition: 0.2s;
         filter: none;
+        filter: brightness(0.9);
     }
 
     &:disabled{
