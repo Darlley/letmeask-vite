@@ -1,15 +1,15 @@
-import { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useState, useEffect, ReactNode } from "react";
 // Hooks 
 import { firebase, auth } from '../services/firebase';
 // Firebase ->
 
-type UserType = {
+type User = {
     id: string,
     name: string,
     avatar: string
 }
 type AuthContextType = {
-    user: UserType | undefined,
+    user: User | undefined,
     signInWidthGoogle: () => Promise<void>
 }
 type AuthContextProviderProps = {
@@ -18,9 +18,9 @@ type AuthContextProviderProps = {
 
 export const AuthContext = createContext({} as AuthContextType);
 
-export const AuthContextProvider = (props: AuthContextProviderProps) => {
+export function AuthContextProvider(props: AuthContextProviderProps) {
 
-    const [user, setUser] = useState<UserType>()
+    const [user, setUser] = useState<User>()
 
     // Guardar contenxt da autenticação do Google em caso de reload da tela
     useEffect(() => {
@@ -49,7 +49,7 @@ export const AuthContextProvider = (props: AuthContextProviderProps) => {
     async function signInWidthGoogle(){
         const provider = new firebase.auth.GoogleAuthProvider();
 
-        const result = await firebase.auth().signInWithPopup(provider);
+        const result = await auth.signInWithPopup(provider);
 
         if(result.user){
             const { displayName, photoURL, uid } = result.user

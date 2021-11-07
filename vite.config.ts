@@ -8,3 +8,9 @@ export default defineConfig({
     host: true
   }
 })
+module.exports = {
+  input: 'src/main.tsx',
+  output: {
+    file: 'dist/bundle.js'
+  }
+}
