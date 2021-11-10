@@ -72,7 +72,7 @@ export const Home = () => {
             Crie sua sala com o Google
           </button>
           <div className="main-content__separator">
-            ou entre em uma sala -Mluv2k0Aj7ncFLwZvOC
+            ou entre em uma sala
           </div>
           <form className="main-content__form" onSubmit={handleJoinRoom}>
             <input
@@ -92,6 +92,12 @@ export const Home = () => {
               Entrar na sala
             </Button>
           </form>
+          <a href="https://github.com/Darlley/" className="main-content__btnGithub">
+            <i className="bi bi-github"></i>
+            <p>
+              Desenvolvido por Darlley Brito
+            </p>
+          </a>
         </div>
       </main>
     </div>
