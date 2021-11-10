@@ -1,15 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 // Rotas
-import { Home } from './pages/Home';
-import { NewRoom } from './pages/NewRoom';
-import { Room } from './pages/Room';
-import { AdminRoom } from './pages/AdminRoom';
+import { Home } from './pages/Home'
+import { NewRoom } from './pages/NewRoom'
+import { Room } from './pages/Room'
+import { AdminRoom } from './pages/AdminRoom'
 // Componentes
 
-import { AuthContextProvider } from './contexts/AuthContext';
+import { AuthContextProvider } from './contexts/AuthContext'
 
 const App = () => {
   return (

@@ -6,11 +6,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: true
-  }
+  },
+  //esbuild: {
+  //  jsxInject: `import React from 'react'`
+  //}
 })
-module.exports = {
-  input: 'src/main.tsx',
-  output: {
-    file: 'dist/bundle.js'
-  }
-}
