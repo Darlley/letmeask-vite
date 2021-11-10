@@ -1,7 +1,7 @@
 # Letmeask - Next Level Week da Rockeseat (trilha de ReactJS)
 
 <p align="center">
-  <img alt="Happy" src="" width="100%">
+  <img alt="Happy" src="https://github.com/Darlley/letmeask-vite/blob/main/screenshot-desktop.png?raw=true" width="100%">
 </p>
 
 ## ✨ Tecnologias
