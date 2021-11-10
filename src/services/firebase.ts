@@ -1,7 +1,7 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase/app'
 
-import 'firebase/auth';
-import 'firebase/database';
+import 'firebase/auth'
+import 'firebase/database'
 
 firebase.initializeApp({
     apiKey: (import.meta.env.VITE_API_KEY) as string,
@@ -13,7 +13,7 @@ firebase.initializeApp({
     appId: (import.meta.env.VITE_APP_ID) as string
 });
 
-const auth = firebase.auth();
-const database = firebase.database();
+const auth = firebase.auth()
+const database = firebase.database()
 
 export { firebase, auth, database }

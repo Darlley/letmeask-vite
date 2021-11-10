@@ -7,6 +7,9 @@ export default defineConfig({
   server: {
     host: true
   },
+  build: {
+    chunkSizeWarningLimit:1500,
+  }
   //esbuild: {
   //  jsxInject: `import React from 'react'`
   //}
