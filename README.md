@@ -1,5 +1,33 @@
 # Letmeask - Next Level Week da Rockeseat (trilha de ReactJS)
 
+<p align="center">
+  <img alt="Happy" src="" width="100%">
+</p>
+
+## ✨ Tecnologias
+
+Esse projeto foi desenvolvido com as seguintes tecnologias:
+
+- [React](https://reactjs.org)
+- [Vite.js](https://vitejs.dev/)
+- [Sass](https://sass-lang.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Firebase](https://firebase.google.com/?hl=pt-br)
+
+## 🔖 Layout
+
+Você pode visualizar o layout do projeto através [desse link](https://www.figma.com/file/QnKeZXOWXmRfeuUbh2PF3Y/Letmeask-(Community)?node-id=45%3A3279). 
+
+## 🚀 Como executar
+
+- Clone o repositório
+- Instale as dependências com `npm i`
+- Inicie o servidor com `npm dev`
+
+Agora você pode acessar [`localhost:3000`](http://localhost:3000) do seu navegador.
+
+Ou acesse o projeto hospedado no [Firebase](https://letmeask-c49ed.web.app/).
+
 ## Configurações 
 ---
 
